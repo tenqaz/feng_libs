@@ -4,6 +4,29 @@
 import telnetlib
 
 
+def get_uid_by_imei(imei_list):
+    """通过imei获取uid
+
+    Args:
+        imei_list: imei的列表
+
+    Return:
+        返回 imei 对应的 uid. dict
+
+    """
+    uid_imei_map = {}
+    db.select("txz_account")
+    sql = "select uid, imei from device_base where imei in ({})".format(
+        ",".join(imei_list))
+    print(sql)
+    rst = db.query(sql)
+    print(len(rst))
+    for record in rst:
+        uid_imei_map[record['imei']] = record['uid']
+
+    return uid_imei_map
+
+
 def getUidListByAppid(appid, db):
     """
         通过appid 获取 uidList
