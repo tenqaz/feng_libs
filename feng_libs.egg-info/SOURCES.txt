@@ -1,7 +1,10 @@
+README.md
 setup.py
 ./feng_libs/__init__.py
 ./feng_libs/common/Momont.py
 ./feng_libs/common/__init__.py
+./feng_libs/data/__init__.py
+./feng_libs/data/proxyPool.py
 ./feng_libs/txz_libs/__init__.py
 ./feng_libs/txz_libs/data.py
 ./feng_libs/txz_libs/monitor.py
