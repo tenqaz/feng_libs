@@ -1,11 +1,18 @@
+"""
+    代理池。
+
+    请求代理池获取代理。代理池服务器是wenfengboy。
+"""
 import asyncio
 
 import aiohttp
 
+from const.server import WENFENG_BOY
+
 
 class ProxyPool:
 
-    url = 'http://www.wenfengboy.com/proxy'
+    url = f'http://{WENFENG_BOY["host"]}/proxy'
 
     def __init__(self):
         pass
@@ -19,8 +26,10 @@ class ProxyPool:
 
         """
 
+        gain_url = f"{ProxyPool.url}/gain"
+
         async with aiohttp.ClientSession() as client:
-            rsp = await client.get(ProxyPool.url, data={"method": "gain"})
+            rsp = await client.get(gain_url)
             proxy = await rsp.text()
             proxy = f"http://{proxy}"
 

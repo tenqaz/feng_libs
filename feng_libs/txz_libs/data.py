@@ -4,7 +4,7 @@
 import telnetlib
 
 
-def get_uid_by_imei(imei_list):
+def get_uid_by_imei(imei_list, db):
     """通过imei获取uid
 
     Args:
