@@ -2,12 +2,11 @@ Metadata-Version: 1.1
 Name: feng-libs
 Version: 0.1
 Summary: 自己写的轮子
-Home-page: http://wenfengboy.com
+Home-page: http://www.wenfengboy.com/
 Author: jim
 Author-email: 326695231@qq.com
 License: jims Licence
-Description: 主要用于自己写的一些工具和便于公司开发的库
-Keywords: feng,jim,txz,utils,libs
+Description: UNKNOWN
 Platform: any
 Classifier: Intended Audience :: Developers
 Classifier: Operating System :: OS Independent

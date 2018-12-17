@@ -7,7 +7,7 @@ import asyncio
 
 import aiohttp
 
-from const.server import WENFENG_BOY
+from feng_libs.const.server import WENFENG_BOY
 
 
 class ProxyPool:
