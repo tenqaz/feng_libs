@@ -49,12 +49,13 @@ def get_license_uid_list_by_appid_list(appid_list, db):
     return uid_list
 
 
-def get_shipment_info_by_appid_list(appid_list, db, startTime=None):
+def get_shipment_info_by_appid_list(appid_list, db, startTime=None, endTime=None):
     """ 获取 appid_list 的出货量
 
     Args:
         appid_list:
         startTime: 可选, 从这个时间开始往后的激活量
+        endTime: 可选, 到这个时间结束
 
     Return:
         rst: list. 表中数据
@@ -67,8 +68,12 @@ def get_shipment_info_by_appid_list(appid_list, db, startTime=None):
     appid_len = len(appid_list)
 
     if startTime:
+        if not endTime:
+            endTime = Moment().format()
+
         sql = "select * from device_base where txz_app_id in " \
-              f"({('%s,'*appid_len)[:-1]}) and create_time > '{startTime}'"
+              f"({('%s,'*appid_len)[:-1]}) and create_time between " \
+              f"'{startTime}' and date_add('{endTime}', interval 1 day)"
     else:
         sql = "select * from device_base where txz_app_id in " \
               f"({('%s,'*appid_len)[:-1]})"
@@ -180,9 +185,7 @@ def get_shipment_uid_list_by_imei_list(imei_list, db):
     db.select("txz_account")
     sql = "select uid, imei from device_base where imei in ({})".format(
         ",".join(imei_list))
-    print(sql)
     rst = db.query(sql)
-    print(len(rst))
     for record in rst:
         uid_imei_map[record['imei']] = record['uid']
 
