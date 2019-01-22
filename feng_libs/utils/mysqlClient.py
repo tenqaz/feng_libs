@@ -10,6 +10,8 @@
     遇到的奇葩问题.
     cursor 的占位符不支持 %d 整型也用%s
 
+    暂时不要使用tornado的loop,还没明白asyncio和tornado的loop的通用性.
+
 """
 import aiomysql
 import pymysql
@@ -162,8 +164,8 @@ async def main():
     mysqlClient = await create_mysql_client()
     await mysqlClient.select("test")
 
-    # sql = "select * from student where id = %s"
-    # result = await mysqlClient.async_query(sql, args=[1,])
+    sql = "select * from student where id = %s"
+    result = await mysqlClient.async_query(sql, args=[1,])
 
     # sql = "select * from student"
     # result = await mysqlClient.async_query(sql)
@@ -180,4 +182,7 @@ async def main():
 
 
 if __name__ == "__main__":
-    IOLoop.current().run_sync(main)
+
+    # IOLoop.current().run_sync(main)
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
