@@ -112,7 +112,7 @@ class MysqlClient():
 
             :param: sql: 查询语句
             :param: num: 查询返回的数量
-            :args: 占位符的参数
+            :param: args: 占位符的参数
         """
         await self._cursor.execute(sql, args=args)
 
