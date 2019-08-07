@@ -12,11 +12,11 @@ from __future__ import annotations
 import functools
 import time
 from types import TracebackType
-from typing import Optional, Any, cast, Callable, TypeVar, Type, List
+from typing import Optional, Any, cast, Callable, TypeVar, Type
 
 from pymysql import Connection
 from pymysql.cursors import Cursor, SSCursor, DictCursor, SSDictCursor
-import pandas as pd
+from sqlalchemy import create_engine
 
 T = TypeVar('T')
 
@@ -141,20 +141,6 @@ class MySQLConn():
         return result
 
     @operation_wraps
-    def query_dataframe(self, sql: str, column: List):
-        """
-
-        :param column:
-        :return:
-        """
-
-        rst = self.query(sql)
-        return pd.DataFrame(rst, columns=column)
-
-
-
-
-    @operation_wraps
     def get(self,
             sql: str,
             *args: Any
@@ -209,3 +195,24 @@ class MySQLConn():
         :return:
         """
         return self
+
+
+def get_sqlalchemy_engine(user: str, passwd: str, database: str, host: str = "127.0.0.1", port: int = 3306, *args,
+                          **kwargs):
+    """
+    获取sqlalchemy的引擎，可以使用pandas直接操作mysql
+
+    :param user:
+    :param passwd:
+    :param host:
+    :param port:
+    :param database:
+    :param args:
+    :param kwargs:
+    :return:
+    """
+
+    return create_engine(
+        "mysql+pymysql://{user}:{passwd}@{host}:{port}/{database}".format(user=user, passwd=passwd, host=host,
+                                                                          port=port, database=database)
+    )
