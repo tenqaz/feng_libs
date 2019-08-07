@@ -4,7 +4,7 @@ __author__ = 'Jim'
 
 import pytest
 
-from txz_libs2.hive import HiveClient, DEFAULT_PORT, DEFAULT_DATABASE
+from feng_libs.utils.hive import HiveClient, DEFAULT_PORT, DEFAULT_DATABASE
 
 property = {
     "host": "txz-data0"
