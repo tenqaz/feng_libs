@@ -1,5 +1,7 @@
 from setuptools import find_packages, setup
 
+VERSION=0.1
+
 setup(
     name="feng_libs",
     requires=[
@@ -11,10 +13,10 @@ setup(
     install_requires=[],
     scripts=[],
     author="jim",
-    author_email="326695231@qq.com",
-    url="http://www.wenfengboy.com/",
+    author_email="zhengwenfeng37@gmail.com",
+    url="https://github.com/tenqaz/feng_libs",
     license="jims Licence",
-    description="自己写的轮子",
+    description="自己写的工具库",
     classifiers=[
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
@@ -24,4 +26,9 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Topic :: Utilities'
     ],
+    entry_points={
+        'console_scripts':[
+            'feng_libs=feng_libs.__main__:main'
+        ]
+    }
 )
