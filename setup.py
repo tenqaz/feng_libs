@@ -1,22 +1,26 @@
 from setuptools import find_packages, setup
 
-VERSION=0.1
+VERSION = 0.2
 
 setup(
     name="feng_libs",
     requires=[
     ],
-    version=0.1,
+    version=VERSION,
     packages=find_packages(),
     include_package_data=True,
     platforms="any",
-    install_requires=[],
+    install_requires=[
+        "fire",
+        "PyPDF2",
+        "opencv-python"
+    ],
     scripts=[],
     author="jim",
     author_email="zhengwenfeng37@gmail.com",
     url="https://github.com/tenqaz/feng_libs",
     license="jims Licence",
-    description="自己写的工具库",
+    description="常用工具库",
     classifiers=[
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
@@ -27,7 +31,7 @@ setup(
         'Topic :: Utilities'
     ],
     entry_points={
-        'console_scripts':[
+        'console_scripts': [
             'feng_libs=feng_libs.__main__:main'
         ]
     }
