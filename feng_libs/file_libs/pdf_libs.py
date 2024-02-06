@@ -10,7 +10,7 @@
 '''
 
 import os
-from PyPDF2 import PdfFileMerger
+from PyPDF2 import PdfMerger
 
 
 class PdfLibs:
@@ -50,7 +50,7 @@ class PdfLibs:
             print("合并失败，输出文件已存在")
             return
 
-        file_merger = PdfFileMerger()
+        file_merger = PdfMerger()
         for pdf_file in PdfLibs.get_pdf_list(input_dir_path):
             file_merger.append(pdf_file)
 
