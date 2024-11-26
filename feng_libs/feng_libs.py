@@ -1,7 +1,6 @@
 from email import header
 
-
-#!/usr/bin/env python
+# !/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
 '''
@@ -12,11 +11,12 @@ from email import header
 @Desc: 
 '''
 
-
 from feng_libs.file_libs.pdf_libs import PdfLibs
+from feng_libs.finance.earnings import Earnings
 
 
 class FengLibs:
 
     def __init__(self):
         self.pdf_libs = PdfLibs()
+        self.earnings = Earnings()
